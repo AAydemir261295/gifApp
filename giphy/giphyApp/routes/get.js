@@ -17,7 +17,6 @@ function getLocale(value) {
     let latinRegex = new RegExp(/[a-zA-Z]/);
     let cyrillicRegex = new RegExp(/[а-яА-Я]/);
 
-    console.log(value);
     if (value.match(latinRegex) && !value.match(cyrillicRegex)) {
         return en;
     } else if (!value.match(latinRegex) && value.match(cyrillicRegex)) {
@@ -46,11 +45,9 @@ router.get('', async function (req, res, next) {
     let locale = getLocale(inputValue);
     if (locale) {
         let url = `${giphyUrl}&q=${inputValue}&lang=${locale}`;
-        console.log(url);
         let response = await request(url);
         let imgSources = getResultImgSrcs(response.data);
         res.send({ result: imgSources });
-        // res.sendStatus(200);
     }
 });
 
