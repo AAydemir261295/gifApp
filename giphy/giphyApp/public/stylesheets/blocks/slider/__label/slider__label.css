@@ -1,0 +1,12 @@
+.slider__label {
+    height: 30px;
+    order: 1;
+    transform: translateY(30px);
+    transition: all 0.3s;
+    color: var(--font-color);
+    pointer-events: none;
+    font-family: medium;
+    font-size: 18px;
+}
+
+

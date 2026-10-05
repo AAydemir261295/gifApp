@@ -1,0 +1,17 @@
+.slider__button {
+    height: 68px;
+    width: 150px;
+    font-size: 20px;
+    color: var(--font-color);
+    border-bottom: 1px solid var(--border-bottom-color);
+    font-family: bold;
+    cursor: pointer;
+}
+
+.slider__button:hover {
+    border-bottom: 1px solid transparent;
+}
+
+.slider__button:hover~.slider__btn-bottom-line {
+    transform: translateX(0px);
+}

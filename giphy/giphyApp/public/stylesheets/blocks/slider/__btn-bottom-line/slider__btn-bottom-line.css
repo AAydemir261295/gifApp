@@ -1,0 +1,8 @@
+.slider__btn-bottom-line {
+    order: 3;
+    height: 2px;
+    width: 100%;
+    transform: translateX(100%);
+    background-color: var(--focus-border-color);
+    transition: all ease-in-out 0.3s;
+}

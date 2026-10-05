@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "bold";
+    src: url("/assets/TTLakesCondensed-Bold.eot") format("embedded-opentype"),
+        url("/assets/TTLakesCondensed-Bold.woff") format("woff"),
+        url("/assets/TTLakesCondensed-Bold.ttf") format("truetype");
+}
+
+
+@font-face {
+    font-family: "medium";
+    src: url("/assets/TTLakesCondensed-Medium.eot") format("embedded-opentype"),
+        url("/assets/TTLakesCondensed-Medium.woff") format("woff"),
+        url("/assets/TTLakesCondensed-Medium.ttf") format("truetype");
+}

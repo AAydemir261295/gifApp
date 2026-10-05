@@ -1,0 +1,6 @@
+.section__input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 71px;
+}

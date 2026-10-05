@@ -1,0 +1,8 @@
+.slider {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 70px;
+    width: auto;
+    overflow: hidden;
+}

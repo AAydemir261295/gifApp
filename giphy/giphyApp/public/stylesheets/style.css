@@ -1,0 +1,41 @@
+@import "/stylesheets/mixins/nostyle.css";
+@import "/stylesheets/fonts/fonts.css";
+
+@import "/stylesheets/body.css";
+@import "/stylesheets/main.css";
+@import "/stylesheets/section/section.css";
+@import "/stylesheets/section/__input-container/section__input-container.css";
+
+
+@import "/stylesheets/blocks/slider/slider.css";
+@import "/stylesheets/blocks/slider/__bottom-line/slider__bottom-line.css";
+@import "/stylesheets/blocks/slider/__btn-bottom-line/slider__btn-bottom-line.css";
+@import "/stylesheets/blocks/slider/__button/slider__button.css";
+@import "/stylesheets/blocks/slider/__input/slider__input.css";
+@import "/stylesheets/blocks/slider/__label/slider__label.css";
+
+
+
+@import "/stylesheets/section/__result-container/section__result-container.css";
+@import "/stylesheets/blocks/img/img.css";
+
+
+
+
+:root {
+    --bg-color: rgb(255, 253, 253);
+    --font-color: #3f4f5b;
+    --label-focus-font-color: rgb(82, 97, 108);
+    --border-bottom-color: #d5d5d5;
+    --focus-border-color: rgb(101, 141, 181);
+    --transform-top: 10px;
+    --transform-time: 0.3s;
+    --scale: 0.9;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}

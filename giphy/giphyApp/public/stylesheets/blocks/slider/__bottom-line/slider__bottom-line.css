@@ -1,0 +1,7 @@
+.slider__bottom-line {
+    order: 3;
+    height: 2px;
+    width: 0px;
+    background-color: var(--focus-border-color);
+    transition: all 0.3s;
+}
