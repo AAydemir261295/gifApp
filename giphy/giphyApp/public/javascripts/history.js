@@ -35,9 +35,7 @@ eventEmitter.subscribe("new", function (msg) {
 })
 
 function drawHistory(data) {
-    console.log(data);
     data.forEach(function (item) {
-        console.log(item);
         let li = document.createElement("li")
         li.className = "history-section__list-item";
         li.innerText = item.value;
