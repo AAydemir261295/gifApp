@@ -1,7 +1,8 @@
 var form = document.forms[0];
 var images = document.images;
-
 var imgEle = document.getElementById("img");
+var currentGifResult = null;
+var eventEmitter = new MyEventEmitter();
 
 async function request(url) {
     try {
@@ -35,13 +36,14 @@ function setImgSources(sources) {
 form.onsubmit = async (event) => {
     event.preventDefault()
     let formData = new FormData(event.currentTarget);
-    console.log(event.currentTarget);
     let inputValue = formData.get("giphy");
-    console.log(inputValue);
     let requestUrl = getUrl(inputValue);
     let imgUrls = await request(requestUrl);
-    setImgSources(JSON.parse(imgUrls).result);
-    // imgEle.src = imgUrl;
-
-    // console.log(imgUrl);
+    let sources = JSON.parse(imgUrls).result;
+    currentGifResult = sources;
+    eventEmitter.emit("new", { input: inputValue, data: sources });
+    setImgSources(sources);
 }
+
+
+

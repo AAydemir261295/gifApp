@@ -1,0 +1,9 @@
+@import "/stylesheets/history-section/__list/history-section__list.css";
+@import "/stylesheets/history-section/__list-item/history-section__list-item.css";
+
+
+.history-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
