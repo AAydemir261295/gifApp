@@ -14,10 +14,11 @@
 @import "/stylesheets/blocks/slider/__input/slider__input.css";
 @import "/stylesheets/blocks/slider/__label/slider__label.css";
 
-
-
 @import "/stylesheets/section/__result-container/section__result-container.css";
 @import "/stylesheets/blocks/img/img.css";
+
+
+@import "/stylesheets/history-section/history-section.css";
 
 
 
