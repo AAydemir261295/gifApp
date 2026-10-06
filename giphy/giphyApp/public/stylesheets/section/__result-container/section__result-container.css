@@ -6,3 +6,17 @@
     width: 990px;
     height: 650px;
 }
+
+@media screen and (max-width: 1000px) {
+    .section__result-container {
+        width: 500px;
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .section__result-container {
+        width: 325px;
+        min-height: 500px;
+    }
+}

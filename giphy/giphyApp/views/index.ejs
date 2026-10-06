@@ -15,16 +15,8 @@
 <body class="body">
   <main class="main">
 
-    <section class="history-section">
-      <ul class="history-section__list nostyle-list">
-        <li class="history-section__list-item">history</li>
-        <li>history</li>
-        <li>history</li>
-      </ul>
-    </section>
-
     <section class="section">
-      <form class="section__input-container">
+      <form class="section__input-container section--second">
         <div class="slider">
           <input class="slider__input nostyle-input" name="giphy" type="text" placeholder="Введите название гифки">
           <label class="slider__label" for="slider__input">Введите название гифки</label>
@@ -36,7 +28,13 @@
           <div class="slider__btn-bottom-line"></div>
         </div>
       </form>
-      <ul class="section__result-container nostyle-list">
+
+      <section class="history-section section--first">
+        <ul class="history-section__list nostyle-list">
+        </ul>
+      </section>
+
+      <ul class="section__result-container nostyle-list section--third">
         <li>
           <img class="img" src="" id="img" alt="Изображение с анимацией">
         </li>
