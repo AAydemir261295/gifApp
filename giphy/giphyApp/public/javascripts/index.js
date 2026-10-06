@@ -21,6 +21,7 @@ function getUrl(value) {
     return str + value;
 }
 
+
 function setImgSources(sources) {
     for (let q = 0; q < sources.length; q++) {
         const src = sources[q];

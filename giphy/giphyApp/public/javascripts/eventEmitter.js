@@ -22,8 +22,3 @@ MyEventEmitter.prototype.emit = function (eventName, data) {
         });
     }
 }
-
-// Window.prototype.eventEmitter = MyEventEmitter;
-
-
-

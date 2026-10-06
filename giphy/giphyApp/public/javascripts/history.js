@@ -1,6 +1,8 @@
 var listEle = document.querySelector(".history-section__list");
 var gifHistory = [];
 var eventEmitter = new MyEventEmitter();
+var input = document.querySelector(".slider__input");
+
 
 
 
@@ -15,7 +17,6 @@ function draw(value, data) {
         gifHistory.push({ ele: li, data: data });
     } else {
         if (gifHistory.length > 19) {
-            console.log("here?");
             listEle.removeChild(gifHistory[gifHistory.length - 1].ele);
             gifHistory.unshift({ ele: li, data: data });
             gifHistory.pop();
@@ -25,6 +26,11 @@ function draw(value, data) {
         let lastEle = gifHistory[1].ele;
         listEle.insertBefore(li, lastEle);
     }
+
+    li.addEventListener("click", function () {
+        setImgSources(data);
+        input.value = '';
+    })
 }
 
 eventEmitter.subscribe("new", function (msg) {
