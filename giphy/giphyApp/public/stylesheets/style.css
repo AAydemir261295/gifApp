@@ -20,11 +20,15 @@
 
 @import "/stylesheets/history-section/history-section.css";
 
+@import "/stylesheets/blocks/modal/modal.css";
+
 
 
 
 :root {
     --bg-color: rgb(255, 253, 253);
+    --bg-color-soft: rgb(255, 254, 254);
+
     --font-color: #3f4f5b;
     --label-focus-font-color: rgb(82, 97, 108);
     --border-bottom-color: #d5d5d5;

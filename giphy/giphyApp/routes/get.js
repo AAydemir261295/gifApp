@@ -36,6 +36,7 @@ async function request(url) {
         return await response.json();
     } catch (error) {
         console.error(error.message);
+        return false;
     }
 }
 
@@ -46,8 +47,12 @@ router.get('', async function (req, res, next) {
     if (locale) {
         let url = `${giphyUrl}&q=${inputValue}&lang=${locale}`;
         let response = await request(url);
-        let imgSources = getResultImgSrcs(response.data);
-        res.send({ result: imgSources });
+        if (response) {
+            let imgSources = getResultImgSrcs(response.data);
+            res.send({ result: imgSources });
+        } else {
+            res.sendStatus(500);
+        }
     }
 });
 

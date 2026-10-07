@@ -13,6 +13,7 @@ async function request(url) {
         return await response.text();
     } catch (error) {
         console.error(error.message);
+        return false;
     }
 }
 
@@ -33,17 +34,27 @@ function setImgSources(sources) {
     }
 }
 
+function showErrors(statusCode) {
+    
+}
+
 
 form.onsubmit = async (event) => {
     event.preventDefault()
     let formData = new FormData(event.currentTarget);
     let inputValue = formData.get("giphy");
     let requestUrl = getUrl(inputValue);
-    let imgUrls = await request(requestUrl);
-    let sources = JSON.parse(imgUrls).result;
-    currentGifResult = sources;
-    eventEmitter.emit("new", { input: inputValue, data: sources });
-    setImgSources(sources);
+    // let imgUrls = await request(requestUrl);
+    let imgUrls = false;
+
+    if (imgUrls) {
+        let sources = JSON.parse(imgUrls).result;
+        currentGifResult = sources;
+        eventEmitter.emit("new", { input: inputValue, data: sources });
+        setImgSources(sources);
+    } else {
+        showModal("");
+    }
 }
 
 

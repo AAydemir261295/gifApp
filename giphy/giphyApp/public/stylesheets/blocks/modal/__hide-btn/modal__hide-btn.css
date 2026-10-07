@@ -1,0 +1,5 @@
+.modal__hide-btn {
+    cursor: pointer;
+    transform: rotate(45deg);
+    font-size: 30px;
+}

@@ -3,8 +3,13 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     width: 990px;
     height: 650px;
+    background-color: var(--bg-color-soft);
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 @media screen and (max-width: 1000px) {
