@@ -1,5 +1,8 @@
-var express = require('express');
+import express from "express";
+import cacheMw from "../middleware/cache.js";
+
 var router = express.Router();
+
 const giphyUrl = "https://api.giphy.com/v1/gifs/search?api_key=ErljLqO5jDG9UQ6E7JjRVBujkwzRtHqm&limit=6&rating=g"
 
 function getResultImgSrcs(data) {
@@ -40,20 +43,27 @@ async function request(url) {
     }
 }
 
-/* GET home page. */
-router.get('', async function (req, res, next) {
-    let inputValue = req.query.value;
-    let locale = getLocale(inputValue);
-    if (locale) {
-        let url = `${giphyUrl}&q=${inputValue}&lang=${locale}`;
-        let response = await request(url);
-        if (response) {
-            let imgSources = getResultImgSrcs(response.data);
-            res.send({ result: imgSources });
-        } else {
-            res.sendStatus(500);
+
+
+router.get('', await cacheMw, async function (req, res, next) {
+    if (!req.cached) {
+        let inputValue = req.query.value;
+        let locale = getLocale(inputValue);
+        if (locale) {
+            let url = `${giphyUrl}&q=${inputValue}&lang=${locale}`;
+            let response = await request(url);
+            if (response) {
+                let imgSources = getResultImgSrcs(response.data);
+                let redisClient = req.app.get("redis");
+                let val = await redisClient.set(inputValue, JSON.stringify(imgSources));
+                res.send({ result: imgSources });
+            } else {
+                res.sendStatus(500);
+            }
         }
+    } else {
+        res.send({ result: req.cached });
     }
 });
 
-module.exports = router;
+export default router;

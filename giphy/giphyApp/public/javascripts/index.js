@@ -18,7 +18,7 @@ async function request(url) {
 }
 
 function getUrl(value) {
-    let str = "http://localhost:3000/get?value=";
+    let str = "http://localhost:3002/get?value=";
     return str + value;
 }
 
@@ -44,8 +44,8 @@ form.onsubmit = async (event) => {
     let formData = new FormData(event.currentTarget);
     let inputValue = formData.get("giphy");
     let requestUrl = getUrl(inputValue);
-    // let imgUrls = await request(requestUrl);
-    let imgUrls = false;
+    let imgUrls = await request(requestUrl);
+    // let imgUrls = false;
 
     if (imgUrls) {
         let sources = JSON.parse(imgUrls).result;

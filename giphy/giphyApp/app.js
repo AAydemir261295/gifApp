@@ -1,33 +1,33 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+import express from "express";
+import path from "path";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import indexRoute from "./routes/index.js";
+import getRoute from "./routes/get.js";
+import redis from "redis";
 
-var indexRoute = require('./routes/index');
-var getRoute = require('./routes/get');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 var app = express();
 
+
+const client =
+  redis.createClient({
+    url: 'redis://0.0.0.0:6379'
+  });
+
+await client.connect();
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set("redis", client);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/', indexRoute);
 app.use('/get', getRoute);
 
+export default app;
 
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
-app.use(function(err, req, res, next) {
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  res.status(err.status || 500);
-  res.render('error');
-});
-
-module.exports = app;
