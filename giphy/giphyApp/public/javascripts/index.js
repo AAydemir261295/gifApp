@@ -4,6 +4,9 @@ var imgEle = document.getElementById("img");
 var currentGifResult = null;
 var eventEmitter = new MyEventEmitter();
 
+
+
+
 async function request(url) {
     try {
         const response = await fetch(url, { credentials: "include" });
@@ -34,28 +37,29 @@ function setImgSources(sources) {
     }
 }
 
-function showErrors(statusCode) {
-    
-}
-
-
 form.onsubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     let formData = new FormData(event.currentTarget);
     let inputValue = formData.get("giphy");
-    let requestUrl = getUrl(inputValue);
-    let imgUrls = await request(requestUrl);
-    // let imgUrls = false;
 
-    if (imgUrls) {
-        let sources = JSON.parse(imgUrls).result;
-        currentGifResult = sources;
-        eventEmitter.emit("new", { input: inputValue, data: sources });
-        setImgSources(sources);
-    } else {
-        showModal("");
-    }
+    eventEmitter.subscribe("isOk", async (msg) => {
+        if (msg) {
+            let requestUrl = getUrl(inputValue);
+            let imgUrls = await request(requestUrl);
+            if (imgUrls) {
+                let sources = JSON.parse(imgUrls).result;
+                currentGifResult = sources;
+                eventEmitter.emit("new", { input: inputValue, data: sources });
+                setImgSources(sources);
+            } else {
+                showModal("");
+            }
+        }
+    })
+
+    eventEmitter.emit("check", inputValue);
 }
+
 
 
 
