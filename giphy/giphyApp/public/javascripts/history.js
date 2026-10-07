@@ -54,9 +54,7 @@ window.addEventListener("load", (event) => {
 });
 
 window.addEventListener('beforeunload', (event) => {
-    // localStorage.clear();
     let cached = JSON.stringify(gifHistory);
     localStorage.setItem("cache", cached);
-
 });
 
